@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+D:\Code blocks\Párhuazmos_alg\Bead\.metadata\.plugins\org.eclipse.jdt.core
+3863201353.index
+4047578022.index

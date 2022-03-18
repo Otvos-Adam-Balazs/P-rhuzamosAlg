@@ -1,0 +1,25 @@
+package MultiBead;
+
+public class Multithreading {
+
+	public static void main(String[] args) {
+		long t1,t2,d;
+		t1 = System.currentTimeMillis();
+		for(int i = 0; i <1 ;i++) {
+			MultithreadThing myThing = new MultithreadThing(i);
+			myThing.start();
+			
+			try {
+				myThing.join(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		t2 = System.currentTimeMillis();
+		d = t2 - t1; //eltelt ido
+		System.out.print("\n"+ d/1000.000 + " Másodperc");
+		
+	}
+
+}

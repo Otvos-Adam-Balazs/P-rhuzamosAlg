@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1644408376 source:d:\code blocks\párhuazmos_alg\gyak1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+
