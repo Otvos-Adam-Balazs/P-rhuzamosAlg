@@ -1,25 +1,35 @@
 package MultiBead;
 
-public class Multithreading {
-
-	public static void main(String[] args) {
-		long t1,t2,d;
-		t1 = System.currentTimeMillis();
-		for(int i = 0; i <4 ;i++) {
-			MultithreadThing myThing = new MultithreadThing(i);
-			myThing.start();
-			
-			try {
-				myThing.join();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		t2 = System.currentTimeMillis();
-		d = t2 - t1; //eltelt ido
-		System.out.print("\n"+ d/1000.000 + " Másodperc");
-		
+public class Multithreading{
+	
+	private MultithreadThing[] sums;
+	private int numOfThreads;
+	
+	public Multithreading(int numOfThreads) {
+		this.numOfThreads = numOfThreads;
+		this.sums = new MultithreadThing[numOfThreads];
 	}
-
+	
+	public long sum(long[] nums) {
+		float steps = (float) Math.ceil(nums.length * 1.0/ numOfThreads);
+		
+		for(int i =0; i<numOfThreads;i++) {
+			sums[i] = new MultithreadThing(nums, i*steps, (i+1)*steps);
+			sums[i].start();
+		}
+		
+		try {
+			for(MultithreadThing worker : sums) 
+				worker.join();
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		long total = 0;
+		
+		for(MultithreadThing worker : sums)
+			total = total + worker.getPartialSum();
+		
+		return total;
+	}
 }

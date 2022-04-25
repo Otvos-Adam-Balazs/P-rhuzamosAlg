@@ -1,33 +1,27 @@
 package MultiBead;
 
 public class MultithreadThing extends Thread{
-	private int threadNumber;
+	private long[] nums;
+	private float low;
+	private float high;
+	private long partialSum;
 	
-	public MultithreadThing (int threadNumber) {
-		this.threadNumber = threadNumber;
+	public MultithreadThing(long[] nums, float low, float high) {	
+		this.nums = nums;
+		this.low = low;
+		this.high = high;
+	}
+
+	public long getPartialSum() {
+		return this.partialSum;
 	}
 	
-	@Override
+	@Override	
 	public void run() {
+		partialSum = 0;
 		
-			
-			long alma = fibonacci(45);
-			System.out.print("\n" + alma +"," + threadNumber);
-			//try {
-				//Thread.sleep(1000);
-			//} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
-			//}
-		
-	}
-	
-	public long fibonacci(long n)  {
-    if(n == 0)
-        return 0;
-    else if(n == 1)
-      return 1;
-   else
-      return fibonacci(n - 1) + fibonacci(n - 2);
+		for(long i=(long)low; i<high; i++) {
+			partialSum = partialSum + nums[(int)i];
+		}
 	}
 }
