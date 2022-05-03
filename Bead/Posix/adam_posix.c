@@ -4,7 +4,7 @@
 #include <string.h>
 #include <pthread.h>
 
-#define N 134217728//2 valamilyen hatványa az effektivitás megnöveléséhez
+#define N 268435456//2 valamilyen hatványa az effektivitás megnöveléséhez
 #define THREADS 8
 #define LOOKING_FOR 'c'
 

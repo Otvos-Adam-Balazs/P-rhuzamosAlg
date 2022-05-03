@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define N 134217728
+#define N  268435456//134217728
 char *randomString(int len);
 int intN(int n);
 int count_letter(char * str, char letter, int start, int end);
